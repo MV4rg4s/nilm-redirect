@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>NILM Dashboard</title>
+<meta http-equiv="refresh" content="2; url=https://nilm-dashboard.trycloudflare.com">
+<style>
+  body { background:#0f0f17; color:#f1f5f9; font-family:sans-serif;
+         display:flex; align-items:center; justify-content:center;
+         height:100vh; margin:0; }
+  .box { text-align:center; }
+  .icon { font-size:3rem; }
+  p { color:#94a3b8; margin:12px 0; }
+  a { color:#60a5fa; }
+  .dot { display:inline-block; width:8px; height:8px; background:#4ade80;
+         border-radius:50%; animation:pulse 1.5s infinite; margin-right:6px; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="icon">⚡</div>
+  <p><span class="dot"></span>Redirecionando para o dashboard NILM...</p>
+  <p style="font-size:0.8rem">Se não redirecionar em 2s:<br>
+  <a id="link" href="https://nilm-dashboard.trycloudflare.com">abrir manualmente</a></p>
+</div>
+<script>
+  fetch('tunnel_url.txt?t=' + Date.now())
+    .then(r => r.text())
+    .then(url => {
+      url = url.trim();
+      if (url.startsWith('http')) {
+        document.getElementById('link').href = url;
+        setTimeout(() => window.location.href = url, 500);
+      }
+    });
+</script>
+</body>
+</html>
