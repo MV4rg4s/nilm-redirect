@@ -1,1 +1,1 @@
-https://nilm-dashboard.trycloudflare.com
+https://val-tubes-baker-dynamic.trycloudflare.com
