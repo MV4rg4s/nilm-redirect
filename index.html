@@ -3,36 +3,49 @@
 <head>
 <meta charset="utf-8">
 <title>NILM Dashboard</title>
-<meta http-equiv="refresh" content="2; url=https://nilm-dashboard.trycloudflare.com">
 <style>
   body { background:#0f0f17; color:#f1f5f9; font-family:sans-serif;
          display:flex; align-items:center; justify-content:center;
          height:100vh; margin:0; }
-  .box { text-align:center; }
+  .box { text-align:center; max-width:480px; padding:24px; }
   .icon { font-size:3rem; }
   p { color:#94a3b8; margin:12px 0; }
-  a { color:#60a5fa; }
+  a { color:#60a5fa; word-break:break-all; }
   .dot { display:inline-block; width:8px; height:8px; background:#4ade80;
          border-radius:50%; animation:pulse 1.5s infinite; margin-right:6px; }
+  .err { color:#f87171; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
 </style>
 </head>
 <body>
 <div class="box">
   <div class="icon">⚡</div>
-  <p><span class="dot"></span>Redirecionando para o dashboard NILM...</p>
-  <p style="font-size:0.8rem">Se não redirecionar em 2s:<br>
-  <a id="link" href="https://nilm-dashboard.trycloudflare.com">abrir manualmente</a></p>
+  <p><span class="dot"></span>Carregando dashboard NILM...</p>
+  <p style="font-size:0.85rem">URL atual: <a id="link" href="#">aguarde...</a></p>
+  <p id="msg" style="font-size:0.75rem;color:#6b7280"></p>
 </div>
 <script>
+  const link = document.getElementById('link');
+  const msg  = document.getElementById('msg');
   fetch('tunnel_url.txt?t=' + Date.now())
     .then(r => r.text())
     .then(url => {
       url = url.trim();
       if (url.startsWith('http')) {
-        document.getElementById('link').href = url;
-        setTimeout(() => window.location.href = url, 500);
+        link.href = url;
+        link.textContent = url;
+        msg.textContent = 'Redirecionando em 1s...';
+        setTimeout(() => window.location.href = url, 1000);
+      } else {
+        link.textContent = 'sem URL ativa';
+        link.className = 'err';
+        msg.textContent = 'Tunnel nao esta rodando no Pi.';
       }
+    })
+    .catch(e => {
+      link.textContent = 'erro';
+      link.className = 'err';
+      msg.textContent = 'Falha ao buscar tunnel_url.txt: ' + e.message;
     });
 </script>
 </body>
