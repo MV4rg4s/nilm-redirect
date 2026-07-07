@@ -1,1 +1,1 @@
-https://drugs-subtle-rachel-blogging.trycloudflare.com
+https://api.trycloudflare.com
