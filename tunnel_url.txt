@@ -1,1 +1,1 @@
-https://queue-shanghai-brochure-scanners.trycloudflare.com
+https://api.trycloudflare.com
