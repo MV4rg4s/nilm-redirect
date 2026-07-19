@@ -1,1 +1,1 @@
-https://loud-martha-producing-bless.trycloudflare.com
+https://api.trycloudflare.com
