@@ -1,1 +1,1 @@
-https://exploration-salt-marketing-penny.trycloudflare.com
+https://api.trycloudflare.com
