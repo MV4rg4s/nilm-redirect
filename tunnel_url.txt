@@ -1,1 +1,1 @@
-https://controller-laboratory-cms-cooling.trycloudflare.com
+https://api.trycloudflare.com
