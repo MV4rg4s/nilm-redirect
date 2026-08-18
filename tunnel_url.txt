@@ -1,1 +1,1 @@
-https://diet-techno-dentists-veteran.trycloudflare.com
+https://api.trycloudflare.com
