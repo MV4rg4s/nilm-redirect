@@ -1,1 +1,1 @@
-https://cowboy-stockholm-look-archived.trycloudflare.com
+https://api.trycloudflare.com
