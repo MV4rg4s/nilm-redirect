@@ -1,1 +1,1 @@
-https://sticks-wash-med-wallpaper.trycloudflare.com
+https://api.trycloudflare.com
